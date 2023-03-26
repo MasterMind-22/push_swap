@@ -15,14 +15,11 @@ $(NAME): $(OBJS)
 
 %.o : %.c push_swap.h
 	$(CC) -c $<
-	cd ./libft && make && cd ..
 
 clean :
 	rm -f $(OBJS)
-	cd ./libft && make clean && cd ..
 
 fclean : clean
 	rm $(NAME)
-	cd ./libft && make fclean && cd ..
 
 re : fclean all
