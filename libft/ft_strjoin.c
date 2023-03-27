@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:44:20 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/26 16:03:31 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/26 16:55:28 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	ft_strcpy(res, str1);
 	ft_strcat(res, str2);
-	ft_strcat(res, " ");
 	free(str1);
 	return (res);
 }

@@ -7,6 +7,12 @@
 #include <limits.h>
 #include "./libft/libft.h"
 
+typedef struct s_list
+{
+	void *content;
+	struct s_list *next;
+} t_list;
+
 
 void	ft_error(void);
 int		ft_atoi(const char *str);

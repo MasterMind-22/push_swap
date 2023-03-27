@@ -19,8 +19,6 @@ int	ft_atoi(const char *str)
 	i = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-    if (i == ft_strlen(str))
-        ft_error();
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
@@ -62,7 +60,8 @@ void check_empty(char *str)
     int i;
 
     i = 0;
-    while (str[i] == 32 || str[i] == 32)
+    while (str[i] == 32 || str[i] == 9
+        || str[i] == '-' || str[i] == '+')
         i++;
     if (i == ft_strlen(str))
         ft_error();
@@ -79,6 +78,7 @@ void parsing(char **av)
     {
         check_empty(av[i]);
         save = ft_strjoin(save, av[i]);
+        save = ft_strjoin(save, " ");
         i++;
     }
     save1 = ft_split(save, ' ');
