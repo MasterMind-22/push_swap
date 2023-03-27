@@ -13,6 +13,15 @@ typedef struct s_list
 	struct s_list *next;
 } t_list;
 
+/*==================== Lists utils ====================*/
+
+int		ft_lstsize(t_list *lst);
+void	ft_lstadd_front(t_list **lst, t_list *new);
+void	ft_lstadd_back(t_list **lst, t_list *new);
+t_list	*ft_lst_new(void *content);
+
+
+/*==================== Push_swap utils ====================*/
 
 void	ft_error(void);
 int		ft_atoi(const char *str);

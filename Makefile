@@ -1,7 +1,9 @@
 NAME = push_swap
 SRCS = help_functions.c \
 	   parsing.c \
-	   push_swap.c
+	   push_swap.c \
+	   list_funcs.c \
+	#    ./libft/ft_strjoin.c
 
 OBJS = ${SRCS:.c=.o}
 CC = cc

@@ -72,7 +72,7 @@ void parsing(char **av)
     int i;
 
     i = 1;
-    char *save;
+    char *save = NULL;
     char **save1;
     while (av[i])
     {
@@ -83,4 +83,12 @@ void parsing(char **av)
     }
     save1 = ft_split(save, ' ');
     check_dups(save1);
+    i = 0;
+    while (save1[i])
+    {
+        free(save1[i]);
+        i++;
+    }
+    free(save1);
+    free(save);
 }

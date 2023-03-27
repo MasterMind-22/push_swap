@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: yonadry <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/18 18:32:30 by yonadry           #+#    #+#             */
-/*   Updated: 2022/10/18 18:32:32 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/27 20:32:35 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,11 @@ char	*ft_strdup(char *s1)
 	size_t	len;
 
 	i = 0;
-	len = ft_strlen(s1);
+
+	if (!s1)
+		len = 1;
+	else
+		len = ft_strlen(s1);
 	copy = malloc(sizeof(char) * len + 1);
 	if (!copy)
 		return (NULL);
