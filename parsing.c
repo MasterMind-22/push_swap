@@ -1,13 +1,5 @@
 #include "push_swap.h"
 
-int    args_count(char **av)
-{
-    int i = 1;
-    while (av[i])
-        i++;
-    return(i);
-}
-
 int	ft_atoi(const char *str)
 {
 	int		i;
@@ -42,10 +34,10 @@ void check_dups(char **av)
     int i=0;
     int j;
 	
-    while (i<args_count(av))
+    while (i < args_count(av))
     {
         j = i+1;
-        while(j<args_count(av))
+        while(j < args_count(av))
         {
             if (ft_atoi(av[i]) == ft_atoi(av[j]))
                 ft_error();
@@ -67,6 +59,28 @@ void check_empty(char *str)
         ft_error();
 }
 
+void    is_sorted(char  **str)
+{
+    int i;
+    int max;
+
+    i = 0;
+    max = 1;
+    if (args_count(str) == 1)
+        return;
+    while (i < args_count(str)-1)
+    {
+        if (ft_atoi(str[i]) < ft_atoi(str[i+1]))
+            max++;
+        i++;
+    }
+    if (max == args_count(str))
+    {
+        ft_error();
+        return ;
+    }
+}
+
 void parsing(char **av)
 {
     int i;
@@ -82,6 +96,7 @@ void parsing(char **av)
         i++;
     }
     save1 = ft_split(save, ' ');
+    is_sorted(save1);
     check_dups(save1);
     i = 0;
     while (save1[i])
