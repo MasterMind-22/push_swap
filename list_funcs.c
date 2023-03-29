@@ -1,8 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   list_funcs.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/28 17:57:37 by yonadry           #+#    #+#             */
+/*   Updated: 2023/03/29 23:03:02 by yonadry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 t_list	*ft_lst_new(void *content)
 {
-	t_list *head;
+	t_list	*head;
+
 	head = malloc(sizeof(t_list));
 	if (!head)
 		return (NULL);
@@ -11,13 +24,14 @@ t_list	*ft_lst_new(void *content)
 	return (head);
 }
 
-void ft_lstadd_back(t_list **lst, t_list *new)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	t_list *tmp;
+	t_list	*tmp;
+
 	if (!(*lst))
 	{
 		*lst = new;
-		return;
+		return ;
 	}
 	tmp = *lst;
 	while (tmp->next)
@@ -25,21 +39,35 @@ void ft_lstadd_back(t_list **lst, t_list *new)
 	tmp->next = new;
 }
 
-void ft_lstadd_front(t_list **lst, t_list *new)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-    new->next = *lst;
-    *lst = new;
+	if (!(*lst))
+	{
+		*lst = new;
+		return ;
+	}
+	new->next = *lst;
+	*lst = new;
 }
 
-int ft_lstsize(t_list *lst)
+int	ft_lstsize(t_list *lst)
 {
-    int counter;
+	int	counter;
 
-    counter = 0;
-    while (lst)
-    {
+	counter = 0;
+	while (lst)
+	{
+		lst = lst->next;
+		counter++;
+	}
+	return (counter);
+}
+
+t_list *ft_lstlast(t_list *lst)
+{
+    if (lst == NULL)
+        return (NULL);
+    while (lst->next != NULL)
         lst = lst->next;
-        counter++;
-    }
-    return(counter);
+    return (lst);
 }

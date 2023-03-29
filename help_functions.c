@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   help_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/03/28 17:59:16 by yonadry           #+#    #+#             */
+/*   Updated: 2023/03/28 18:03:02 by yonadry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_error(void)
@@ -6,10 +18,12 @@ void	ft_error(void)
 	exit(1);
 }
 
-int    args_count(char **av)
+int	args_count(char **av)
 {
-    int i = 0;
-    while (av[i])
-        i++;
-    return(i);
+	int	i;
+
+	i = 0;
+	while (av[i])
+		i++;
+	return (i);
 }
