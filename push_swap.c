@@ -40,12 +40,7 @@ int	main(int ac, char **av)
 		if (ft_lstsize(lst) > 1 && (ft_lstsize(lst) <= 3))
 			sort_3_nums(lst);
 		// free_arr((void *)args);
-		while (lst)
-		{
-			printf("%d\n", lst->content);
-			free(lst);
-			lst = lst->next;
-		}
+
 	}
 	else
 		ft_error();

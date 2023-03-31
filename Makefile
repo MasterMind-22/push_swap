@@ -29,4 +29,8 @@ fclean : clean
 
 re : fclean all
 
+push : 
+	git add *
+	git commit
+	git push
 .PHONY : all clean fclean re
