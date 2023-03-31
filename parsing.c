@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 18:01:34 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/28 18:03:27 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/30 22:05:00 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,17 +87,15 @@ void	is_sorted(char **str)
 		i++;
 	}
 	if (max == args_count(str))
-	{
-		ft_error();
-		return ;
-	}
+		exit(0);
 }
 
-void	parsing(char **av)
+char	**parsing(char **av)
 {
 	int		i;
 	char	*save;
 	char	**save1;
+	char	**tmp;
 
 	i = 1;
 	save = NULL;
@@ -109,14 +107,11 @@ void	parsing(char **av)
 		i++;
 	}
 	save1 = ft_split(save, ' ');
-	is_sorted(save1);
-	check_dups(save1);
 	i = 0;
 	while (save1[i])
-	{
-		free(save1[i]);
-		i++;
-	}
-	free(save1);
+		ft_atoi(save1[i++]);
+	is_sorted(save1);
+	check_dups(save1);
 	free(save);
+	return (save1);
 }

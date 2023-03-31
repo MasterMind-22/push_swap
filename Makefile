@@ -4,7 +4,9 @@ SRCS = help_functions.c \
 	   push_swap.c \
 	   list_funcs.c \
 	   libft_utils.c \
-	   ft_split.c
+	   ft_split.c \
+	   instructions.c \
+	   sort_number.c 
 
 OBJS = ${SRCS:.c=.o}
 CC = cc

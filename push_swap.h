@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/29 23:02:57 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/30 22:33:07 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,22 @@
 
 typedef struct s_list
 {
-	void			*content;
+	int				content;
 	struct s_list	*next;
 }	t_list;
 
+// typedef struct s_push
+// {
+// 	t_list *jj;
+// 	int		
+// }	t_push;
 /*==================== Lists utils ====================*/
 
 int		ft_lstsize(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
-t_list	*ft_lst_new(void *content);
+t_list	*ft_lst_new(int num);
 char	*ft_strjoin(char const *s1, char const *s2);
 void	*ft_calloc(size_t count, size_t size);
 size_t	ft_strlen(const char *str);
@@ -44,8 +49,28 @@ void	ft_error(void);
 int		ft_atoi(const char *str);
 void	check_dups(char **av);
 void	check_empty(char *str);
-void	parsing(char **av);
+char	**parsing(char **av);
 void	is_sorted(char **str);
 int		args_count(char **av);
+void	free_arr(void **str);
+void sort_3_nums(t_list *lst);
+
+
+/*==================== Instructions ====================*/
+
+void	sa(t_list *stack_a, int a);
+void	sb(t_list *stack_b, int b);
+void	ss(t_list *stack_a, t_list *stack_b);
+void	ra(t_list *stack_a, int a);
+void	rb(t_list *stack_b, int a);
+void	rr(t_list *stack_a, t_list *stack_b);
+void	rra(t_list **stack_a, int a);
+void	rrb(t_list **stack_b, int b);
+void	rrr(t_list **stack_a, t_list **stack_b);
+void	pa(t_list **stack_a, t_list **stack_b);
+void	pb(t_list **stack_a, t_list **stack_b);
+
+
+
 
 #endif

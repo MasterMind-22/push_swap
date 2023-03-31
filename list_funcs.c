@@ -6,20 +6,20 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:57:37 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/29 23:03:02 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/03/30 19:50:27 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list	*ft_lst_new(void *content)
+t_list	*ft_lst_new(int num)
 {
 	t_list	*head;
 
 	head = malloc(sizeof(t_list));
 	if (!head)
 		return (NULL);
-	head->content = content;
+	head->content = num;
 	head->next = NULL;
 	return (head);
 }

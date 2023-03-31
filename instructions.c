@@ -2,7 +2,7 @@
 
 void sa(t_list *stack_a, int a)
 {
-	char	*tmp;
+	int	tmp;
 
 	tmp = stack_a->next->content;
 	stack_a->next->content = stack_a->content;
@@ -13,7 +13,7 @@ void sa(t_list *stack_a, int a)
 
 void sb(t_list *stack_b, int b)
 {
-	char	*tmp;
+	int tmp;
 
 	tmp = stack_b->next->content;
 	stack_b->next->content = stack_b->content;
@@ -31,7 +31,7 @@ void ss(t_list *stack_a, t_list *stack_b)
 
 void ra(t_list *stack_a, int a)
 {
-	char	*tmp;
+	int	tmp;
 	t_list	*head;
 
 	head = stack_a;
@@ -46,7 +46,7 @@ void ra(t_list *stack_a, int a)
 
 void rb(t_list *stack_b, int a)
 {
-	char	*tmp;
+	int	tmp;
 	t_list	*head;
 
 	head = stack_b;
@@ -68,32 +68,34 @@ void rr(t_list *stack_a, t_list *stack_b)
 
 void rra(t_list **stack_a, int a)
 {
-	t_list *head;
-	t_list *tmp;
+	t_list *last = *stack_a;
+	t_list *b_last = NULL;
 
-	head = *stack_a;
-	tmp = ft_lstlast(head);
-	ft_lstadd_front(stack_a, ft_lst_new(tmp->content));
-	while (head->next->next)
-		head = head->next;
-	head->next = NULL;
-	free(head->next);
+	while (last->next)
+	{
+		b_last = last;
+		last = last->next;
+	}
+	last->next = *stack_a;
+	b_last->next = NULL;
+	*stack_a = last;
 	if (a)
 		ft_putstr_fd("rra\n", 1);
 }
 
 void rrb(t_list **stack_b, int b)
 {
-	t_list *head;
-	t_list *tmp = *stack_b;
+	t_list *last = *stack_b;
+	t_list *b_last = NULL;
 
-	head = *stack_b;
-	tmp = ft_lstlast(head);
-	ft_lstadd_front(stack_b, ft_lst_new(tmp->content));
-	while (head->next->next)
-		head = head->next;
-	head->next = NULL;
-	free(head->next);
+	while (last->next)
+	{
+		b_last = last;
+		last = last->next;
+	}
+	last->next = *stack_b;
+	b_last->next = NULL;
+	*stack_b = last;
 	if (b)
 		ft_putstr_fd("rrb\n", 1);
 }
@@ -105,30 +107,54 @@ void	rrr(t_list **stack_a, t_list **stack_b)
 	ft_putstr_fd("rrr\n", 1);
 }
 
-int main()
+void pa(t_list **stack_a, t_list **stack_b)
 {
-	t_list *stack_b = ft_lst_new("5");
-	ft_lstadd_back(&stack_b, ft_lst_new("4"));
-	ft_lstadd_back(&stack_b, ft_lst_new("3"));
-	ft_lstadd_back(&stack_b, ft_lst_new("2"));
-	ft_lstadd_back(&stack_b, ft_lst_new("1"));
-	t_list *stack_a = ft_lst_new("1");
-	ft_lstadd_back(&stack_a, ft_lst_new("2"));
-	ft_lstadd_back(&stack_a, ft_lst_new("3"));
-	ft_lstadd_back(&stack_a, ft_lst_new("4"));
-	ft_lstadd_back(&stack_a, ft_lst_new("5"));
-	// rrb(&stack_b, 2);
-	// rra(&stack_a, 2);
-	rrr(&stack_a, &stack_b);
-	while (stack_b)
-	{
-		printf("%s ", stack_b->content);
-		stack_b = stack_b->next;
-	}
-	printf("\n=========================\n");
-	while (stack_a)
-	{
-		printf("%s ", stack_a->content);
-		stack_a = stack_a->next;
-	}
+	t_list	*head = *stack_a;
+
+	ft_lstadd_front(stack_b, ft_lst_new(head->content));
+	*stack_a = (*stack_a)->next;
+	free(head);
+	ft_putstr_fd("pa\n", 1);
 }
+
+void pb(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*head = *stack_b;
+
+	ft_lstadd_front(stack_a, ft_lst_new(head->content));
+	*stack_b = (*stack_b)->next;
+	free(head);
+	ft_putstr_fd("pb\n", 1);
+}
+
+
+
+
+
+// int main()
+// {
+// 	t_list *stack_b =		 ft_lst_new(5);
+// 	ft_lstadd_back(&stack_b, ft_lst_new(4));
+// 	ft_lstadd_back(&stack_b, ft_lst_new(3));
+// 	ft_lstadd_back(&stack_b, ft_lst_new(2));
+// 	ft_lstadd_back(&stack_b, ft_lst_new(1));
+// 	// t_list *stack_a =		 ft_lst_new(1);
+// 	// ft_lstadd_back(&stack_a, ft_lst_new(2));
+// 	// ft_lstadd_back(&stack_a, ft_lst_new(3));
+// 	// ft_lstadd_back(&stack_a, ft_lst_new(4));
+// 	// ft_lstadd_back(&stack_a, ft_lst_new(4));
+// 	rrb(&stack_b, 2);
+// 	// rra(&stack_a, 2);
+// 	// pb(&stack_a, &stack_b);
+// 	while (stack_b)
+// 	{
+// 		printf("%d ", stack_b->content);
+// 		stack_b = stack_b->next;
+// 	}
+// 	// printf("\n=========================\n");
+// 	// while (stack_a)
+// 	// {
+// 	// 	printf("%d ", stack_a->content);
+// 	// 	stack_a = stack_a->next;
+// 	// }
+// }
