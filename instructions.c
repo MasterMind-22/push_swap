@@ -29,40 +29,38 @@ void ss(t_list *stack_a, t_list *stack_b)
 	ft_putstr_fd("ss\n", 1);
 }
 
-void ra(t_list *stack_a, int a)
+void ra(t_list **stack_a, int a)
 {
 	int	tmp;
 	t_list	*head;
 
-	head = stack_a;
-	tmp = head->content;
-	while (head->next)
-		head = head->next;
-	stack_a->content = head->content;
-	head->content = tmp;
+	head = *stack_a;
+	ft_lstadd_back(&head, ft_lst_new(head->content));
+	*stack_a = head;
+	*stack_a = (*stack_a)->next;
+	free(head);
 	if (a)
 		ft_putstr_fd("ra\n", 1);
 }
 
-void rb(t_list *stack_b, int a)
+void rb(t_list **stack_b, int a)
 {
 	int	tmp;
 	t_list	*head;
 
-	head = stack_b;
-	tmp = head->content;
-	while (head->next)
-		head = head->next;
-	stack_b->content = head->content;
-	head->content = tmp;
+	head = *stack_b;
+	ft_lstadd_back(&head, ft_lst_new(head->content));
+	*stack_b = head;
+	*stack_b = (*stack_b)->next;
+	free(head);
 	if (a)
 		ft_putstr_fd("rb\n", 1);
 }
 
 void rr(t_list *stack_a, t_list *stack_b)
 {
-	ra(stack_a, 0);
-	rb(stack_b, 0);
+	ra(&stack_a, 0);
+	rb(&stack_b, 0);
 	ft_putstr_fd("rr\n", 1);
 }
 

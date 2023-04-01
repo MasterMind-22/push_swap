@@ -4,8 +4,8 @@ void sort_3_nums(t_list *lst)
 {
 	if (lst->content > lst->next->next->content)
 	{
-		ra(lst, 1);
-		sa(lst, 1);
+		ra(&lst, 1);
+		// sa(lst, 1);
 	}
 	else if (lst->content > lst->next->content)
 		sa(lst, 1);

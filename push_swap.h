@@ -20,6 +20,7 @@
 
 typedef struct s_list
 {
+	int index;
 	int				content;
 	struct s_list	*next;
 }	t_list;
@@ -61,8 +62,8 @@ void sort_3_nums(t_list *lst);
 void	sa(t_list *stack_a, int a);
 void	sb(t_list *stack_b, int b);
 void	ss(t_list *stack_a, t_list *stack_b);
-void	ra(t_list *stack_a, int a);
-void	rb(t_list *stack_b, int a);
+void	ra(t_list **stack_a, int a);
+void	rb(t_list **stack_b, int a);
 void	rr(t_list *stack_a, t_list *stack_b);
 void	rra(t_list **stack_a, int a);
 void	rrb(t_list **stack_b, int b);
