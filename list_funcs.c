@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:57:37 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/30 19:50:27 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/01 20:14:45 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_list	*ft_lst_new(int num)
 	head = malloc(sizeof(t_list));
 	if (!head)
 		return (NULL);
+	head->index = -1;
 	head->content = num;
 	head->next = NULL;
 	return (head);

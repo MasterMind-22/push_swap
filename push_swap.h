@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/30 22:33:07 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/01 16:44:33 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 typedef struct s_list
 {
 	int				content;
+	int				index;
 	struct s_list	*next;
 }	t_list;
 
@@ -61,8 +62,8 @@ void sort_3_nums(t_list *lst);
 void	sa(t_list *stack_a, int a);
 void	sb(t_list *stack_b, int b);
 void	ss(t_list *stack_a, t_list *stack_b);
-void	ra(t_list *stack_a, int a);
-void	rb(t_list *stack_b, int a);
+void	ra(t_list **stack_a, int a);
+void	rb(t_list **stack_b, int a);
 void	rr(t_list *stack_a, t_list *stack_b);
 void	rra(t_list **stack_a, int a);
 void	rrb(t_list **stack_b, int b);
