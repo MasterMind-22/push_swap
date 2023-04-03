@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 18:01:34 by yonadry           #+#    #+#             */
-/*   Updated: 2023/03/30 22:05:00 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/02 19:44:22 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,12 @@ int	ft_atoi(const char *str)
 	i = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
-	if (str[i] == '-')
-		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
 		i++;
+	}
 	while (str[i])
 	{
 		if (str[i] < 9 || (str[i] > 9 && str[i] < 32) || (str[i] > 32

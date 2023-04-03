@@ -34,11 +34,11 @@ void ra(t_list **stack_a, int a)
 	int	tmp;
 	t_list	*head;
 
-	head = stack_a;
+	head = *stack_a;
 	tmp = head->content;
 	while (head->next)
 		head = head->next;
-	stack_a->content = head->content;
+	(*stack_a)->content = head->content;
 	head->content = tmp;
 	if (a)
 		ft_putstr_fd("ra\n", 1);
@@ -49,11 +49,11 @@ void rb(t_list **stack_b, int a)
 	int	tmp;
 	t_list	*head;
 
-	head = stack_b;
+	head = *stack_b;
 	tmp = head->content;
 	while (head->next)
 		head = head->next;
-	stack_b->content = head->content;
+	(*stack_b)->content = head->content;
 	head->content = tmp;
 	if (a)
 		ft_putstr_fd("rb\n", 1);
@@ -109,20 +109,20 @@ void	rrr(t_list **stack_a, t_list **stack_b)
 
 void pa(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*head = *stack_a;
+	t_list	*head = *stack_b;
 
-	ft_lstadd_front(stack_b, ft_lst_new(head->content));
-	*stack_a = (*stack_a)->next;
+	ft_lstadd_front(stack_a, ft_lst_new(head->content));
+	*stack_b = (*stack_b)->next;
 	free(head);
 	ft_putstr_fd("pa\n", 1);
 }
 
 void pb(t_list **stack_a, t_list **stack_b)
 {
-	t_list	*head = *stack_b;
+	t_list	*head = *stack_a;
 
-	ft_lstadd_front(stack_a, ft_lst_new(head->content));
-	*stack_b = (*stack_b)->next;
+	ft_lstadd_front(stack_b, ft_lst_new(head->content));
+	*stack_a = (*stack_a)->next;
 	free(head);
 	ft_putstr_fd("pb\n", 1);
 }
@@ -138,23 +138,21 @@ void pb(t_list **stack_a, t_list **stack_b)
 // 	ft_lstadd_back(&stack_b, ft_lst_new(3));
 // 	ft_lstadd_back(&stack_b, ft_lst_new(2));
 // 	ft_lstadd_back(&stack_b, ft_lst_new(1));
-// 	// t_list *stack_a =		 ft_lst_new(1);
-// 	// ft_lstadd_back(&stack_a, ft_lst_new(2));
-// 	// ft_lstadd_back(&stack_a, ft_lst_new(3));
-// 	// ft_lstadd_back(&stack_a, ft_lst_new(4));
-// 	// ft_lstadd_back(&stack_a, ft_lst_new(4));
-// 	rrb(&stack_b, 2);
-// 	// rra(&stack_a, 2);
-// 	// pb(&stack_a, &stack_b);
+// 	t_list *stack_a =		 ft_lst_new(1);
+// 	ft_lstadd_back(&stack_a, ft_lst_new(2));
+// 	ft_lstadd_back(&stack_a, ft_lst_new(3));
+// 	ft_lstadd_back(&stack_a, ft_lst_new(4));
+// 	ft_lstadd_back(&stack_a, ft_lst_new(5));
+// 	pa(&stack_a, &stack_b);
 // 	while (stack_b)
 // 	{
 // 		printf("%d ", stack_b->content);
 // 		stack_b = stack_b->next;
 // 	}
-// 	// printf("\n=========================\n");
-// 	// while (stack_a)
-// 	// {
-// 	// 	printf("%d ", stack_a->content);
-// 	// 	stack_a = stack_a->next;
-// 	// }
+// 	printf("\n=========================\na: \n");
+// 	while (stack_a)
+// 	{
+// 		printf("%d ", stack_a->content);
+// 		stack_a = stack_a->next;
+// 	}
 // }

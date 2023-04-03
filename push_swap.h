@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/01 16:44:33 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/03 20:04:29 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,11 @@
 
 typedef struct s_list
 {
-	int index;
-	int				content;
 	int				index;
+	int				content;
 	struct s_list	*next;
 }	t_list;
 
-// typedef struct s_push
-// {
-// 	t_list *jj;
-// 	int		
-// }	t_push;
 /*==================== Lists utils ====================*/
 
 int		ft_lstsize(t_list *lst);
@@ -55,7 +49,7 @@ char	**parsing(char **av);
 void	is_sorted(char **str);
 int		args_count(char **av);
 void	free_arr(void **str);
-void sort_3_nums(t_list *lst);
+void sort_3_nums(t_list **stack_a,	t_list **stack_b);
 
 
 /*==================== Instructions ====================*/

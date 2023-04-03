@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:55:36 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/01 17:06:58 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/03 21:01:05 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,26 @@ void add_to_list(t_list **lst , char **av)
 int	main(int ac, char **av)
 {
 	char **args;
-	t_list *lst = NULL;
+	t_list *stack_a = NULL;
+	t_list *stack_b = NULL;
 
 	// atexit(fun);
 	if (ac > 1)
 	{
 		args = parsing(av);
-		add_to_list(&lst, args);
-		// if (ft_lstsize(lst) > 1 && (ft_lstsize(lst) <= 3))
-			sort_3_nums(lst);
-		// free_arr((void *)args);
-
+		add_to_list(&stack_a, args);
+		sort_3_nums(&stack_a, &stack_b);
+		while ((stack_a))
+		{
+			printf("%d === %d\n", (stack_a)->content , (stack_a)->index);
+			(stack_a) = (stack_a)->next;
+		}
+			printf("\n=========================\nb: \n");
+		while (stack_b)
+		{
+			printf("%d ", stack_b->content);
+			stack_b = stack_b->next;
+		}
 	}
 	else
 		ft_error();
