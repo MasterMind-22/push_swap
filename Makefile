@@ -1,3 +1,4 @@
+MAKEFLAGS += s
 NAME = push_swap
 SRCS = help_functions.c \
 	   parsing.c \

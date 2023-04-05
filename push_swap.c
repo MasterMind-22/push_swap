@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:55:36 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/03 21:01:05 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/05 19:45:54 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	main(int ac, char **av)
 			printf("\n=========================\nb: \n");
 		while (stack_b)
 		{
-			printf("%d ", stack_b->content);
+			printf("%d === %d\n", stack_b->content, stack_b->index);
 			stack_b = stack_b->next;
 		}
 	}
