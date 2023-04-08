@@ -3,21 +3,29 @@
 void sa(t_list *stack_a, int a)
 {
 	int	tmp;
+	int	index;
 
 	tmp = stack_a->next->content;
+	index = stack_a->next->index;
 	stack_a->next->content = stack_a->content;
+	stack_a->next->index = stack_a->index;
 	stack_a->content = tmp;
+	stack_a->index = index;
 	if (a)
 		ft_putstr_fd("sa\n", 1);
 }
 
 void sb(t_list *stack_b, int b)
 {
-	int tmp;
+	int	tmp;
+	int	index;
 
 	tmp = stack_b->next->content;
+	index = stack_b->next->index;
 	stack_b->next->content = stack_b->content;
+	stack_b->next->index = stack_b->index;
 	stack_b->content = tmp;
+	stack_b->index = index;
 	if (b)
 		ft_putstr_fd("sb\n", 1);
 }
@@ -31,30 +39,28 @@ void ss(t_list *stack_a, t_list *stack_b)
 
 void ra(t_list **stack_a, int a)
 {
-	int	tmp;
+	int		tmp;
 	t_list	*head;
 
 	head = *stack_a;
-	tmp = head->content;
-	while (head->next)
-		head = head->next;
-	(*stack_a)->content = head->content;
-	head->content = tmp;
+	ft_lstadd_back(stack_a, ft_lst_new(head->content));
+	ft_lstlast(head)->index = (head)->index;
+	(*stack_a) = (*stack_a)->next;
+	free(head);
 	if (a)
 		ft_putstr_fd("ra\n", 1);
 }
 
 void rb(t_list **stack_b, int a)
 {
-	int	tmp;
+	int		tmp;
 	t_list	*head;
 
 	head = *stack_b;
-	tmp = head->content;
-	while (head->next)
-		head = head->next;
-	(*stack_b)->content = head->content;
-	head->content = tmp;
+	ft_lstadd_back(stack_b, ft_lst_new(head->content));
+	ft_lstlast(head)->index = (head)->index;
+	(*stack_b) = (*stack_b)->next;
+	free(head);
 	if (a)
 		ft_putstr_fd("rb\n", 1);
 }

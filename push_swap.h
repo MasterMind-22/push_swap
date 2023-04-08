@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/03 20:04:29 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/07 23:26:56 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ size_t	ft_strlen(const char *str);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char *s, char c);
+int		ft_strcmp(char *s1, char *s2);
 
 /*==================== Push_swap utils ====================*/
 
@@ -49,7 +50,7 @@ char	**parsing(char **av);
 void	is_sorted(char **str);
 int		args_count(char **av);
 void	free_arr(void **str);
-void sort_3_nums(t_list **stack_a,	t_list **stack_b);
+void	sort_3_nums(t_list **stack_a,	t_list **stack_b);
 
 
 /*==================== Instructions ====================*/
