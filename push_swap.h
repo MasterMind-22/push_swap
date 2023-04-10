@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/07 23:26:56 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/10 22:04:03 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_list
 	int				content;
 	struct s_list	*next;
 }	t_list;
+
 
 /*==================== Lists utils ====================*/
 
