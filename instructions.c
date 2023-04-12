@@ -92,7 +92,7 @@ void rra(t_list **stack_a, int a)
 void rrb(t_list **stack_b, int b)
 {
 	t_list *last = *stack_b;
-	t_list *b_last = NULL;
+	t_list *b_last;
 
 	while (last->next)
 	{
@@ -151,7 +151,13 @@ void pb(t_list **stack_a, t_list **stack_b)
 // 	ft_lstadd_back(&stack_a, ft_lst_new(3));
 // 	ft_lstadd_back(&stack_a, ft_lst_new(4));
 // 	ft_lstadd_back(&stack_a, ft_lst_new(5));
-// 	pa(&stack_a, &stack_b);
+// 	int a=3;
+// 	while (a--)
+// 	{
+// 	rrb(&stack_a, 1);
+// 		/* code */
+// 	}
+	
 // 	while (stack_b)
 // 	{
 // 		printf("%d ", stack_b->content);

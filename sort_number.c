@@ -55,36 +55,14 @@ void push_to_b(t_list **stack_a, t_list **stack_b)
 	}
 }
 
-// void push_to_a(t_list **stack_a, t_list **stack_b, t_list *max, t_list *bef_max)
-// {
-	// int a;
-	// int stack_size;
-	// t_list *head;
-
-	// a = ft_lstsize(*stack_b);
-	// while (a--)
-	// {
-		// head = *stack_b;
-		// stack_size = ft_lstsize(*stack_b);
-		// while (stack_size--)
-		// {
-		// 	if ((*stack_b)->index == max->index)
-		// get_list_max(head, max, bef_max);
-		// 		pa(stack_a, stack_b);
-		// 	else
-		// 		rb(stack_b, 1);
-		// }
-	// }
-// }
-
 void get_list_max(t_list *stack_b, t_list **max, t_list **bef_max)
 {
 	t_list *head;
 	int i;
 
-	i = ft_lstsize(stack_b) - 1;
+	i = ft_lstsize(stack_b);
 	head = stack_b;
-	while (head)
+	while (i--)
 	{
 		if (head->content > (*max)->content)
 		{
@@ -95,25 +73,41 @@ void get_list_max(t_list *stack_b, t_list **max, t_list **bef_max)
 			*bef_max = head;
 		head = head->next;
 	}
-	// printf(" =========| %d |========= \n", (max)->content);
-	// printf(" =========| %d |========= \n", (bef_max)->content);
+}
+
+void push_to_a(t_list **stack_a, t_list **stack_b)
+{
+	t_list	*max;
+	t_list	*bef_max;
+	int		i;
+	int		stack_size;
+	i = ft_lstsize(*stack_b);
+	max = ft_lst_new(INT_MIN);
+	bef_max = ft_lst_new(INT_MIN);
+	while (i--)
+	{
+		stack_size = ft_lstsize(*stack_b);
+		while (stack_size--)
+		{
+		
+		// if (ft_lstsize(*stack_b) == 0)
+		// 	break;
+		get_list_max(*stack_b, &max, &bef_max);
+		if ((*stack_b)->content == max->content)
+			pa(stack_a, stack_b);
+		else
+			rb(stack_b, 1);
+		}
+	}
 }
 
 void sort_3_nums(t_list **stack_a,	t_list **stack_b)
 {
 	t_list	*head;
-	t_list	*max;
-	t_list	*bef_max;
 	int		i;
+	int		stack_size;
 	
-	i = ft_lstsize(*stack_a);
-	max = ft_lst_new(INT_MIN);
-	bef_max = ft_lst_new(INT_MIN);
-
 	index_list(stack_a);
 	push_to_b(stack_a, stack_b);
-	get_list_max(*stack_b, &max, &bef_max);
-	printf(" =========| %d |========= \n", max->content);
-	printf(" =========| %d |========= \n", bef_max->content);
-
+	push_to_a(stack_a, stack_b);
 }
