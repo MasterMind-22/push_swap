@@ -4,7 +4,7 @@ void	index_list(t_list **stack_a)
 {
 	t_list *head = *stack_a;
 	t_list *tmp = *stack_a;
-	int max = 0;
+	// int max = 0;
 	int i = ft_lstsize(head);
 	while (i--)
 	{
@@ -75,37 +75,51 @@ void get_list_max(t_list *stack_b, t_list **max, t_list **bef_max)
 	}
 }
 
+void count_move_to_head(t_list *stack_a)
+{
+	int i =1;
+	while (stack_a)
+	{
+		stack_a->moves = i;
+		i++;
+		stack_a = stack_a->next;
+	}
+}
+
 void push_to_a(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*max;
 	t_list	*bef_max;
 	int		i;
-	int		stack_size;
 	i = ft_lstsize(*stack_b);
 	max = ft_lst_new(INT_MIN);
 	bef_max = ft_lst_new(INT_MIN);
-	while (i--)
+	// (void)stack_b;
+	int k;
+	k = i;
+
+	
+	while (1)
 	{
-		stack_size = ft_lstsize(*stack_b);
-		while (stack_size--)
-		{
-		
-		// if (ft_lstsize(*stack_b) == 0)
-		// 	break;
+		if (ft_lstsize(*stack_b) == 0)
+			break;
 		get_list_max(*stack_b, &max, &bef_max);
+		printf("+++ %d +++", max->content);
+		// count_move_to_head(*stack_b);
 		if ((*stack_b)->content == max->content)
 			pa(stack_a, stack_b);
 		else
-			rb(stack_b, 1);
+		{
+			rrb(stack_b, 1);
 		}
 	}
 }
 
 void sort_3_nums(t_list **stack_a,	t_list **stack_b)
 {
-	t_list	*head;
-	int		i;
-	int		stack_size;
+	// t_list	*head;
+	// int		i;
+	// int		stack_size;
 	
 	index_list(stack_a);
 	push_to_b(stack_a, stack_b);

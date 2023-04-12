@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/10 22:04:03 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/12 16:34:53 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct s_list
 {
 	int				index;
 	int				content;
+	int				moves;
 	struct s_list	*next;
 }	t_list;
 

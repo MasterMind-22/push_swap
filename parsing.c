@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 18:01:34 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/07 16:39:55 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/12 16:24:11 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_dups(char **av)
 
 void	check_empty(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i] == 32 || str[i] == 9 || str[i] == '-' || str[i] == '+')
@@ -97,7 +97,6 @@ char	**parsing(char **av)
 	int		i;
 	char	*save;
 	char	**save1;
-	char	**tmp;
 
 	i = 1;
 	save = NULL;

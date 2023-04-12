@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:55:36 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/11 18:24:14 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/12 16:57:07 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ int	main(int ac, char **av)
 		args = parsing(av);
 		add_to_list(&stack_a, args);
 		sort_3_nums(&stack_a, &stack_b);
-		// while ((stack_a))
-		// {
-		// 	printf("%d === %d\n", (stack_a)->content , (stack_a)->index);
-		// 	(stack_a) = (stack_a)->next;
-		// }
-		// 	printf("\n=========================\nb: \n");
-		// while (stack_b)
-		// {
-		// 	printf("%d === %d\n", stack_b->content, stack_b->index);
-		// 	stack_b = stack_b->next;
-		// }
+		while ((stack_a))
+		{
+			printf("%d === %d === %d\n", (stack_a)->content , (stack_a)->index, stack_a->moves);
+			(stack_a) = (stack_a)->next;
+		}
+			printf("\n=========================\nb: \n");
+		while (stack_b)
+		{
+			printf("%d === %d === %d\n", stack_b->content, stack_b->index, stack_b->moves);
+			stack_b = stack_b->next;
+		}
 	}
 	else
 		ft_error();

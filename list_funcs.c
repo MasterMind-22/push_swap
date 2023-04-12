@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:57:37 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/02 16:21:39 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/12 16:36:15 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ t_list	*ft_lst_new(int num)
 	if (!head)
 		return (NULL);
 	head->index = 0;
+	head->moves = 0;
 	head->content = num;
 	head->next = NULL;
 	return (head);

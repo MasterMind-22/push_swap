@@ -20,7 +20,7 @@ $(NAME): $(OBJS)
 	$(CC) $? -o $(NAME)
 
 %.o : %.c push_swap.h
-	$(CC) -c $<
+	$(CC) $(CFLAGS) -c $<
 
 clean :
 	rm -f $(OBJS)

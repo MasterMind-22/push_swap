@@ -39,7 +39,6 @@ void ss(t_list *stack_a, t_list *stack_b)
 
 void ra(t_list **stack_a, int a)
 {
-	int		tmp;
 	t_list	*head;
 
 	head = *stack_a;
@@ -53,7 +52,6 @@ void ra(t_list **stack_a, int a)
 
 void rb(t_list **stack_b, int a)
 {
-	int		tmp;
 	t_list	*head;
 
 	head = *stack_b;
@@ -99,11 +97,12 @@ void rrb(t_list **stack_b, int b)
 		b_last = last;
 		last = last->next;
 	}
-	last->next = *stack_b;
 	b_last->next = NULL;
+	last->next = *stack_b;
 	*stack_b = last;
 	if (b)
 		ft_putstr_fd("rrb\n", 1);
+	return ;
 }
 
 void	rrr(t_list **stack_a, t_list **stack_b)
