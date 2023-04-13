@@ -89,6 +89,8 @@ void rra(t_list **stack_a, int a)
 
 void rrb(t_list **stack_b, int b)
 {
+	if (*stack_b)
+	{
 	t_list *last = *stack_b;
 	t_list *b_last;
 
@@ -102,7 +104,8 @@ void rrb(t_list **stack_b, int b)
 	*stack_b = last;
 	if (b)
 		ft_putstr_fd("rrb\n", 1);
-	return ;
+	}
+	return;
 }
 
 void	rrr(t_list **stack_a, t_list **stack_b)
@@ -121,12 +124,13 @@ void pa(t_list **stack_a, t_list **stack_b)
 	*stack_b = (*stack_b)->next;
 	free(head);
 	ft_putstr_fd("pa\n", 1);
+	return;
 }
 
 void pb(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*head = *stack_a;
-
+	head = *stack_a;
 	ft_lstadd_front(stack_b, ft_lst_new(head->content));
 	(*stack_b)->index = head->index;
 	*stack_a = (*stack_a)->next;

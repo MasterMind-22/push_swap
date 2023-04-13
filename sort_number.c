@@ -90,29 +90,35 @@ void push_to_a(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*max;
 	t_list	*bef_max;
-	int		i;
-	i = ft_lstsize(*stack_b);
+	int i = ft_lstsize(*stack_b);
 	max = ft_lst_new(INT_MIN);
 	bef_max = ft_lst_new(INT_MIN);
-	// (void)stack_b;
-	int k;
-	k = i;
-
-	
-	while (1)
+	// (void)stack_a;
+	int a= 0;
+	while (i--)
 	{
-		if (ft_lstsize(*stack_b) == 0)
-			break;
-		get_list_max(*stack_b, &max, &bef_max);
-		printf("+++ %d +++", max->content);
-		// count_move_to_head(*stack_b);
-		if ((*stack_b)->content == max->content)
-			pa(stack_a, stack_b);
-		else
+		// if (!(*stack_b))
+		// 	return;
+		a = ft_lstsize(*stack_b);
+		while (a--)
 		{
-			rrb(stack_b, 1);
+			get_list_max(*stack_b, &max, &bef_max);
+			count_move_to_head(*stack_b);
+			if ((*stack_b) == max)
+				pa(stack_a, stack_b);
+			else if (*stack_b)
+			{
+				if (max->moves > ft_lstsize(*stack_b)/2)
+					rrb(stack_b, 1);
+				else if (max->moves < ft_lstsize(*stack_b)/2)
+					rb(stack_b, 1);
+				else
+					pa(stack_a, stack_b);
+					
+			}
 		}
 	}
+	return;
 }
 
 void sort_3_nums(t_list **stack_a,	t_list **stack_b)
