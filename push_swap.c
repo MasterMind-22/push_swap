@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:55:36 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/13 22:54:05 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/14 23:35:40 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,27 +17,30 @@ void fun()
     system("leaks push_swap");
 }
 
-void add_to_list(t_list **lst , char **av)
+void	add_to_list(t_list **lst, char **av)
 {
-	int i;
+	int	i;
 
 	i = -1;
 	while (av[++i])
 		ft_lstadd_back(lst, ft_lst_new(ft_atoi(av[i])));
 }
 
-
 int	main(int ac, char **av)
 {
-	char **args;
-	t_list *stack_a = NULL;
-	t_list *stack_b = NULL;
+	char	**args;
+	t_list	*stack_a;
+	t_list	*stack_b;
+	t_list	*free_lst;
 
+	stack_a = NULL;
+	stack_b = NULL;
 	// atexit(fun);
 	if (ac > 1)
 	{
 		args = parsing(av);
 		add_to_list(&stack_a, args);
+		free_arr((char **)args);
 		sort_3_nums(&stack_a, &stack_b);
 		// while ((stack_a))
 		// {
@@ -50,8 +53,16 @@ int	main(int ac, char **av)
 		// 	printf("%d === %d === %d\n", stack_b->content, stack_b->index, stack_b->moves);
 		// 	stack_b = stack_b->next;
 		// }
+		while (stack_a)
+		{
+			free_lst = stack_a;
+			stack_a = stack_a->next;
+			free(free_lst);
+		}
+
 	}
 	else
 		ft_error();
+		// atexit(fun);
 	return (0);
 }

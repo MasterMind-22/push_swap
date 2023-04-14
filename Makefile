@@ -6,12 +6,13 @@ SRCS = help_functions.c \
 	   list_funcs.c \
 	   libft_utils.c \
 	   ft_split.c \
-	   instructions.c \
+	   instructions_1.c \
+	   instructions_2.c \
 	   sort_number.c 
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g
+CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address -static-libsan #-g -O1 
 
 
 all : $(NAME)

@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:59:16 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/07 16:39:31 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/14 17:09:50 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	args_count(char **av)
 	return (i);
 }
 
-void free_arr(void **str)
+void free_arr(char **str)
 {
 	int i;
 

@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/13 23:49:38 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/14 20:14:15 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include<unistd.h>
 # include <stdlib.h>
 # include <limits.h>
+# include <string.h>
 
 typedef struct s_list
 {
@@ -25,7 +26,6 @@ typedef struct s_list
 	int				moves;
 	struct s_list	*next;
 }	t_list;
-
 
 /*==================== Lists utils ====================*/
 
@@ -51,9 +51,8 @@ void	check_empty(char *str);
 char	**parsing(char **av);
 void	is_sorted(char **str);
 int		args_count(char **av);
-void	free_arr(void **str);
+void	free_arr(char **str);
 void	sort_3_nums(t_list **stack_a,	t_list **stack_b);
-
 
 /*==================== Instructions ====================*/
 
@@ -68,8 +67,5 @@ void	rrb(t_list **stack_b, int b);
 void	rrr(t_list **stack_a, t_list **stack_b);
 void	pa(t_list **stack_a, t_list **stack_b);
 void	pb(t_list **stack_a, t_list **stack_b);
-
-
-
 
 #endif

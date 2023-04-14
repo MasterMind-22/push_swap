@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:57:37 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/13 23:48:08 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/14 16:59:16 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	while (tmp->next)
 		tmp = tmp->next;
 	tmp->next = new;
-	return;
+	return ;
 }
 
 void	ft_lstadd_front(t_list **lst, t_list *new)
@@ -66,11 +66,11 @@ int	ft_lstsize(t_list *lst)
 	return (counter);
 }
 
-t_list *ft_lstlast(t_list *lst)
+t_list	*ft_lstlast(t_list *lst)
 {
-    if (lst == NULL)
-        return (NULL);
-    while (lst->next != NULL)
-        lst = lst->next;
-    return (lst);
+	if (lst == NULL)
+		return (NULL);
+	while (lst->next != NULL)
+		lst = lst->next;
+	return (lst);
 }
