@@ -87,7 +87,7 @@ void get_list_max(t_list *stack_b, t_list **max, t_list **bef_max)
 
 void count_move_to_head(t_list *stack_a)
 {
-	int i =0;
+	int i;
 	while (stack_a)
 	{
 		stack_a->moves = i;
@@ -95,7 +95,6 @@ void count_move_to_head(t_list *stack_a)
 		stack_a = stack_a->next;
 	}
 }
-
 void push_to_a(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*max;
@@ -105,8 +104,14 @@ void push_to_a(t_list **stack_a, t_list **stack_b)
 	{
 			get_list_max(*stack_b, &max, &bef_max);
 			count_move_to_head(*stack_b);
-			if ((*stack_b) == max)
+			if ((*stack_b) == bef_max)
 				pa(stack_a, stack_b);
+			if ((*stack_b) == max)
+			{
+				pa(stack_a, stack_b);
+				if (*stack_a && (*stack_a)->next && (*stack_a)->content > (*stack_a)->next->content)
+					sa(*stack_a, 1);
+			}
 			else if (max->moves >= ft_lstsize(*stack_b)/2)
 			{
 				while (*stack_b != max)
@@ -120,6 +125,7 @@ void push_to_a(t_list **stack_a, t_list **stack_b)
 	}
 	return;
 }
+
 
 void sort_3_nums(t_list **stack_a,	t_list **stack_b)
 {
