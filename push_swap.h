@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/12 16:34:53 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/13 23:49:38 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	sb(t_list *stack_b, int b);
 void	ss(t_list *stack_a, t_list *stack_b);
 void	ra(t_list **stack_a, int a);
 void	rb(t_list **stack_b, int a);
-void	rr(t_list *stack_a, t_list *stack_b);
+void	rr(t_list **stack_a, t_list **stack_b);
 void	rra(t_list **stack_a, int a);
 void	rrb(t_list **stack_b, int b);
 void	rrr(t_list **stack_a, t_list **stack_b);

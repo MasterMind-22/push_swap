@@ -11,13 +11,13 @@ SRCS = help_functions.c \
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 
 
 all : $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $? -o $(NAME)
+	$(CC) $(CFLAGS) $? -o $(NAME)
 
 %.o : %.c push_swap.h
 	$(CC) $(CFLAGS) -c $<

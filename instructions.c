@@ -5,6 +5,8 @@ void sa(t_list *stack_a, int a)
 	int	tmp;
 	int	index;
 
+	if (!stack_a)
+		return;
 	tmp = stack_a->next->content;
 	index = stack_a->next->index;
 	stack_a->next->content = stack_a->content;
@@ -13,6 +15,7 @@ void sa(t_list *stack_a, int a)
 	stack_a->index = index;
 	if (a)
 		ft_putstr_fd("sa\n", 1);
+	return;
 }
 
 void sb(t_list *stack_b, int b)
@@ -20,6 +23,8 @@ void sb(t_list *stack_b, int b)
 	int	tmp;
 	int	index;
 
+	if (!stack_b)
+		return;
 	tmp = stack_b->next->content;
 	index = stack_b->next->index;
 	stack_b->next->content = stack_b->content;
@@ -28,6 +33,7 @@ void sb(t_list *stack_b, int b)
 	stack_b->index = index;
 	if (b)
 		ft_putstr_fd("sb\n", 1);
+	return;
 }
 
 void ss(t_list *stack_a, t_list *stack_b)
@@ -35,12 +41,15 @@ void ss(t_list *stack_a, t_list *stack_b)
 	sa(stack_a, 0);
 	sb(stack_b, 0);
 	ft_putstr_fd("ss\n", 1);
+	return;
 }
 
 void ra(t_list **stack_a, int a)
 {
 	t_list	*head;
 
+	if (!(*stack_a))
+		return;
 	head = *stack_a;
 	ft_lstadd_back(stack_a, ft_lst_new(head->content));
 	ft_lstlast(head)->index = (head)->index;
@@ -48,12 +57,15 @@ void ra(t_list **stack_a, int a)
 	free(head);
 	if (a)
 		ft_putstr_fd("ra\n", 1);
+	return;
 }
 
 void rb(t_list **stack_b, int a)
 {
 	t_list	*head;
 
+	if (!(*stack_b))
+		return;
 	head = *stack_b;
 	ft_lstadd_back(stack_b, ft_lst_new(head->content));
 	ft_lstlast(head)->index = (head)->index;
@@ -63,11 +75,12 @@ void rb(t_list **stack_b, int a)
 		ft_putstr_fd("rb\n", 1);
 }
 
-void rr(t_list *stack_a, t_list *stack_b)
+void rr(t_list **stack_a, t_list **stack_b)
 {
-	ra(&stack_a, 0);
-	rb(&stack_b, 0);
+	ra(stack_a, 0);
+	rb(stack_b, 0);
 	ft_putstr_fd("rr\n", 1);
+	return;
 }
 
 void rra(t_list **stack_a, int a)
@@ -75,6 +88,8 @@ void rra(t_list **stack_a, int a)
 	t_list *last = *stack_a;
 	t_list *b_last = NULL;
 
+	if (!(*stack_a))
+		return;
 	while (last->next)
 	{
 		b_last = last;
@@ -85,15 +100,16 @@ void rra(t_list **stack_a, int a)
 	*stack_a = last;
 	if (a)
 		ft_putstr_fd("rra\n", 1);
+	return;
 }
 
 void rrb(t_list **stack_b, int b)
 {
-	if (*stack_b)
-	{
 	t_list *last = *stack_b;
 	t_list *b_last;
-
+	
+	if (!(*stack_b))
+		return;
 	while (last->next)
 	{
 		b_last = last;
@@ -104,7 +120,6 @@ void rrb(t_list **stack_b, int b)
 	*stack_b = last;
 	if (b)
 		ft_putstr_fd("rrb\n", 1);
-	}
 	return;
 }
 
@@ -119,6 +134,8 @@ void pa(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*head = *stack_b;
 
+	if (!(*stack_b))
+		return;
 	ft_lstadd_front(stack_a, ft_lst_new(head->content));
 	(*stack_a)->index = (*stack_b)->index;
 	*stack_b = (*stack_b)->next;
@@ -130,12 +147,16 @@ void pa(t_list **stack_a, t_list **stack_b)
 void pb(t_list **stack_a, t_list **stack_b)
 {
 	t_list	*head = *stack_a;
+
+	if (!(*stack_a))
+		return;
 	head = *stack_a;
 	ft_lstadd_front(stack_b, ft_lst_new(head->content));
 	(*stack_b)->index = head->index;
 	*stack_a = (*stack_a)->next;
 	free(head);
 	ft_putstr_fd("pb\n", 1);
+	return;
 }
 
 
