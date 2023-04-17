@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/14 20:14:15 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/17 00:08:03 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,14 @@ typedef struct s_list
 	int				moves;
 	struct s_list	*next;
 }	t_list;
+
+typedef struct s_stack
+{
+	int	chunk_start;
+	int	chunk_end;
+	int	stop;
+
+}	t_stack;
 
 /*==================== Lists utils ====================*/
 
@@ -52,7 +60,15 @@ char	**parsing(char **av);
 void	is_sorted(char **str);
 int		args_count(char **av);
 void	free_arr(char **str);
-void	sort_3_nums(t_list **stack_a,	t_list **stack_b);
+void	sort_nums(t_list **stack_a,	t_list **stack_b);
+void	index_list_min_to_max(t_list **stack_a);
+t_list	*get_list_min(t_list *stack_a);
+void	sort_3_numbers(t_list **stack_a);
+void	index_list(t_list *stack_a);
+void	push_to_a(t_list **stack_a, t_list **stack_b);
+void mini_push_to_b(t_list **stack_a, t_list **stack_b, int *stop, int *chunk_start, int *chunk_end);
+void	push_to_b(t_list **stack_a, t_list **stack_b, int d);
+void	sort_5_numbers(t_list **stack_a, t_list **stack_b);
 
 /*==================== Instructions ====================*/
 

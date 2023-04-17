@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:55:36 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/14 23:35:40 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/16 22:50:25 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,16 @@ int	main(int ac, char **av)
 	char	**args;
 	t_list	*stack_a;
 	t_list	*stack_b;
-	t_list	*free_lst;
+	// t_list	*free_lst;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	// atexit(fun);
 	if (ac > 1)
 	{
 		args = parsing(av);
 		add_to_list(&stack_a, args);
 		free_arr((char **)args);
-		sort_3_nums(&stack_a, &stack_b);
+		sort_nums(&stack_a, &stack_b);
 		// while ((stack_a))
 		// {
 		// 	printf("%d === %d === %d\n", (stack_a)->content , (stack_a)->index, stack_a->moves);
@@ -53,16 +52,16 @@ int	main(int ac, char **av)
 		// 	printf("%d === %d === %d\n", stack_b->content, stack_b->index, stack_b->moves);
 		// 	stack_b = stack_b->next;
 		// }
-		while (stack_a)
-		{
-			free_lst = stack_a;
-			stack_a = stack_a->next;
-			free(free_lst);
-		}
+		// while (stack_a)
+		// {
+		// 	free_lst = stack_a;
+		// 	stack_a = stack_a->next;
+		// 	free(free_lst);
+		// }
 
 	}
 	else
 		ft_error();
-		// atexit(fun);
+	// atexit(fun);
 	return (0);
 }

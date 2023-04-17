@@ -8,7 +8,9 @@ SRCS = help_functions.c \
 	   ft_split.c \
 	   instructions_1.c \
 	   instructions_2.c \
-	   sort_number.c 
+	   instructions_3.c \
+	   sort_nums_100_500.c \
+	   sort_nums_3_5.c
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
