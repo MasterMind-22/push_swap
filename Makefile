@@ -14,7 +14,7 @@ SRCS = help_functions.c \
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address -static-libsan #-g -O1 
+CFLAGS = -Wall -Wextra -Werror #-g -O1 #-g -fsanitize=address -static-libsan
 
 
 all : $(NAME)

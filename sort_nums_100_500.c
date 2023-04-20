@@ -43,7 +43,6 @@ void mini_push_to_b(t_list **stack_a, t_list **stack_b, int *stop, int *chunk_st
 	}
 	else if (*stop <= *chunk_end)
 		ra(stack_a, 1);
-
 }
 
 
@@ -104,43 +103,17 @@ void	whois_first(t_list **stack_a, t_list **stack_b)
 
 	get_list_max(*stack_b, &max, &bef_max);
 	index_list(*stack_b);
-	if (max->moves > ft_lstsize(*stack_b)/2 || max->moves > ft_lstsize(*stack_b)/2)
-	{
-		if (ft_lstsize(*stack_b) / 2 - max->moves < ft_lstsize(*stack_b) / 2 - bef_max->moves)
-		{
-			while (*stack_b != max)
-				rrb(stack_b, 1);
-			pa(stack_a, stack_b);
-		}
-		else
-		{
-			while (*stack_b != bef_max)
-				rrb(stack_b, 1);
-			if ((*stack_b)->content < (*stack_a)->content)
-			{
-				pa(stack_a, stack_b);
-				if ((*stack_a)->content > (*stack_a)->next->content)
-					sa(*stack_a, 1);
-			}
-			else
-				pa(stack_a, stack_b);
 
-		}
-		// pa(stack_a, stack_b);
-	}
-	else
-	{
-		if ((*stack_b) == bef_max)
-			pa(stack_a, stack_b);
-		if (max->moves >= ft_lstsize(*stack_b) / 2)
-			while (*stack_b != max)
-				rrb(stack_b, 1);
-		else if (max->moves < ft_lstsize(*stack_b) / 2)
-			while (*stack_b != max)
-				rb(stack_b, 1);
-		if ((*stack_b) == max)
-			pa(stack_a, stack_b);
-	}
+	if ((*stack_b) == bef_max)
+		pa(stack_a, stack_b);
+	if (max->moves >= ft_lstsize(*stack_b) / 2)
+		while (*stack_b != max)
+			rrb(stack_b, 1);
+	else if (max->moves < ft_lstsize(*stack_b) / 2)
+		while (*stack_b != max)
+			rb(stack_b, 1);
+	if ((*stack_b) == max)
+		pa(stack_a, stack_b);
 	return;
 }
 
@@ -149,8 +122,8 @@ void	push_to_a(t_list **stack_a, t_list **stack_b)
 	while (ft_lstsize(*stack_b))
 	{
 		whois_first(stack_a, stack_b);
-		// if (*stack_a && (*stack_a)->next && (*stack_a)->content > (*stack_a)->next->content)
-		// 	sa(*stack_a, 1);
+		if (*stack_a && (*stack_a)->next && (*stack_a)->content > (*stack_a)->next->content)
+			sa(*stack_a, 1);
 	}
 	return ;
 }
