@@ -103,16 +103,42 @@ void	whois_first(t_list **stack_a, t_list **stack_b)
 
 	get_list_max(*stack_b, &max, &bef_max);
 	index_list(*stack_b);
-
 	if ((*stack_b) == bef_max)
 		pa(stack_a, stack_b);
-	if (max->moves >= ft_lstsize(*stack_b) / 2)
+	if (max->moves > ft_lstsize(*stack_b) / 2)
 		while (*stack_b != max)
+		{
+			// if ((*stack_b) == bef_max)
+			// {
+			// 	pa(stack_a, stack_b);
+			// 	return;
+			// }
 			rrb(stack_b, 1);
-	else if (max->moves < ft_lstsize(*stack_b) / 2)
+		}
+	else
 		while (*stack_b != max)
+		{
+			if ((*stack_b) == bef_max)
+			{
+				pa(stack_a, stack_b);
+				{
+					get_list_max(*stack_b, &max, &bef_max);
+					index_list(*stack_b);
+					if (max->moves > ft_lstsize(*stack_b)/2)
+						while (*stack_b != max)
+							rrb(stack_b, 1);
+					else
+						while (*stack_b != max)
+							rb(stack_b, 1);
+					pa(stack_a, stack_b);
+				}
+				if ((*stack_a)->content > (*stack_a)->next->content)
+					sa(*stack_a, 1);
+				return;
+			}
 			rb(stack_b, 1);
-	if ((*stack_b) == max)
+		}
+	if (*stack_b == max)
 		pa(stack_a, stack_b);
 	return;
 }
@@ -124,6 +150,10 @@ void	push_to_a(t_list **stack_a, t_list **stack_b)
 		whois_first(stack_a, stack_b);
 		if (*stack_a && (*stack_a)->next && (*stack_a)->content > (*stack_a)->next->content)
 			sa(*stack_a, 1);
+		// if (ft_lstsize(*stack_a) == 3)
+		// 	sort_3_numbers(stack_a);
+		// if (*stack_a && (*stack_a)->next && (*stack_a)->content > (*stack_a)->next->content)
+		// 	sa(*stack_a, 1);
 	}
 	return ;
 }
