@@ -1,38 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 17:55:36 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/22 09:19:00 by yonadry          ###   ########.fr       */
+/*   Created: 2022/11/28 18:49:34 by yonadry           #+#    #+#             */
+/*   Updated: 2022/11/30 14:17:00 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	main(int ac, char **av)
-{
-	char	**args;
-	t_list	*stack_a;
-	t_list	*stack_b;
-	t_list	*free_lst;
+# ifndef BUFFER_SIZE
 
-	stack_a = NULL;
-	stack_b = NULL;
-	if (ac > 1)
-	{
-		args = parsing(av, 0);
-		add_to_list(&stack_a, args);
-		free_arr((char **)args);
-		sort_nums(&stack_a, &stack_b);
-		while (stack_a)
-		{
-			free_lst = stack_a;
-			stack_a = stack_a->next;
-			free(free_lst);
-		}
-	}
-	return (0);
-}
+#  define BUFFER_SIZE 20
+
+# endif
+
+# include<stdio.h>
+# include<stdlib.h>
+# include<unistd.h>
+# include<string.h>
+# include<fcntl.h>
+
+char	*get_next_line(int fd);
+size_t	ft_strlen(char *s);
+int		newline_found(char *read_line);
+char	*ft_strjoin(char *s1, char *s2);
+char	*ft_strdup(char *s1);
+
+#endif

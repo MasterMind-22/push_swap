@@ -1,8 +1,8 @@
 MAKEFLAGS += s
 NAME = push_swap
+CHECKER = checker
 SRCS = help_functions.c \
 	   parsing.c \
-	   push_swap.c \
 	   list_funcs.c \
 	   libft_utils.c \
 	   ft_split.c \
@@ -10,17 +10,23 @@ SRCS = help_functions.c \
 	   instructions_2.c \
 	   instructions_3.c \
 	   sort_nums_100_500.c \
-	   sort_nums_3_5.c
+	   sort_nums_3_5.c \
+	   get_next_line.c \
+	   get_next_line_utils.c
 
 OBJS = ${SRCS:.c=.o}
 CC = cc
-CFLAGS = -Wall -Wextra -Werror #-g -O1 #-g -fsanitize=address -static-libsan
-
+CFLAGS = -Wall -Wextra -Werror
 
 all : $(NAME)
 
+bonus : $(CHECKER)
+
+$(CHECKER): $(OBJS)
+	$(CC) checker.c $(CFLAGS) $? -o $(CHECKER)
+
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $? -o $(NAME)
+	$(CC) push_swap.c $(CFLAGS) $? -o $(NAME)
 
 %.o : %.c push_swap.h
 	$(CC) $(CFLAGS) -c $<
@@ -29,7 +35,7 @@ clean :
 	rm -f $(OBJS)
 
 fclean : clean
-	rm -f $(NAME)
+	rm -f $(NAME) $(CHECKER)
 
 re : fclean all
 

@@ -64,7 +64,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (NULL);
 	str1 = (char *)s1;
 	if (!str1)
-		str1 = ft_calloc(1,1);
+		str1 = ft_calloc(1, 1);
 	str2 = (char *)s2;
 	res = malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
 	if (!res)
@@ -77,4 +77,20 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	res[i] = '\0';
 	free(str1);
 	return (res);
+}
+
+int	ft_strcmp( char *s1, char *s2)
+{
+	size_t	i;
+
+	i = 0;
+	while (s1[i] != '\0' || s2[i] != '\0')
+	{
+		if (s1[i] < s2[i])
+			return (-1);
+		else if (s1[i] > s2[i])
+			return (1);
+		i++;
+	}
+	return (0);
 }

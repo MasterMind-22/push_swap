@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:56:13 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/17 00:08:03 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/22 09:20:23 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct s_stack
 
 }	t_stack;
 
-/*==================== Lists utils ====================*/
+/*==================== Libft utils ====================*/
 
 int		ft_lstsize(t_list *lst);
 void	ft_lstadd_front(t_list **lst, t_list *new);
@@ -49,14 +49,17 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 void	ft_putstr_fd(char *s, int fd);
 char	**ft_split(char *s, char c);
 int		ft_strcmp(char *s1, char *s2);
+int		ft_atoi(const char *str);
+char	*get_next_line(int fd);
+int		newline_found(char *read_line);
+char	*ft_strdup(char *s1);
 
 /*==================== Push_swap utils ====================*/
 
 void	ft_error(void);
-int		ft_atoi(const char *str);
 void	check_dups(char **av);
 void	check_empty(char *str);
-char	**parsing(char **av);
+char	**parsing(char **av, int is_bonus);
 void	is_sorted(char **str);
 int		args_count(char **av);
 void	free_arr(char **str);
@@ -66,9 +69,11 @@ t_list	*get_list_min(t_list *stack_a);
 void	sort_3_numbers(t_list **stack_a);
 void	index_list(t_list *stack_a);
 void	push_to_a(t_list **stack_a, t_list **stack_b);
-int		mini_push_to_b(t_list **stack_a, t_list **stack_b, int *chunk_start, int *chunk_end);
+void	mini_push_to_b(t_list **stack_a, t_list **stack_b,
+			int *chunk_start, int *chunk_end);
 void	push_to_b(t_list **stack_a, t_list **stack_b, int d);
 void	sort_5_numbers(t_list **stack_a, t_list **stack_b);
+void	add_to_list(t_list **lst, char **av);
 
 /*==================== Instructions ====================*/
 

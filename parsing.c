@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 18:01:34 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/12 16:24:11 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/22 09:20:06 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,10 @@ int	ft_atoi(const char *str)
 	i = 0;
 	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
+	if (str[i] == '-')
+		sign = -1;
 	if (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign = -1;
 		i++;
-	}
 	while (str[i])
 	{
 		if (str[i] < 9 || (str[i] > 9 && str[i] < 32) || (str[i] > 32
@@ -92,7 +90,7 @@ void	is_sorted(char **str)
 		exit(0);
 }
 
-char	**parsing(char **av)
+char	**parsing(char **av, int is_bonus)
 {
 	int		i;
 	char	*save;
@@ -100,7 +98,7 @@ char	**parsing(char **av)
 
 	i = 1;
 	save = NULL;
-    while (av[i])
+	while (av[i])
 	{
 		check_empty(av[i]);
 		save = ft_strjoin(save, av[i]);
@@ -115,7 +113,8 @@ char	**parsing(char **av)
 			ft_error();
 		ft_atoi(save1[i++]);
 	}
-	is_sorted(save1);
+	if (!is_bonus)
+		is_sorted(save1);
 	check_dups(save1);
 	free(save);
 	return (save1);

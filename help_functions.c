@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 17:59:16 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/14 17:09:50 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/22 08:48:10 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ int	args_count(char **av)
 	return (i);
 }
 
-void free_arr(char **str)
+void	free_arr(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -41,27 +41,11 @@ void free_arr(char **str)
 	free(str);
 }
 
-int	ft_strcmp( char *s1, char *s2)
-{
-	size_t	i;
-
-	i = 0;
-	while (s1[i] != '\0' || s2[i] != '\0')
-	{
-		if (s1[i] < s2[i])
-			return (-1);
-		else if (s1[i] > s2[i])
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
 void	index_list_min_to_max(t_list **stack_a)
 {
-	t_list *head;
-	t_list *tmp;
-	int i;
+	t_list	*head;
+	t_list	*tmp;
+	int		i;
 
 	head = *stack_a;
 	tmp = *stack_a;
@@ -76,5 +60,14 @@ void	index_list_min_to_max(t_list **stack_a)
 			head = head->next;
 		}
 		tmp = tmp->next;
- 	}
+	}
+}
+
+void	add_to_list(t_list **lst, char **av)
+{
+	int	i;
+
+	i = -1;
+	while (av[++i])
+		ft_lstadd_back(lst, ft_lst_new(ft_atoi(av[i])));
 }

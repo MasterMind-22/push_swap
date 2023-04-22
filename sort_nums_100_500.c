@@ -1,16 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   sort_nums_100_500.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/22 08:11:52 by yonadry           #+#    #+#             */
+/*   Updated: 2023/04/22 08:26:05 by yonadry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-int mini_push_to_b(t_list **stack_a, t_list **stack_b, int *chunk_start, int *chunk_end)
+void	mini_push_to_b(t_list **stack_a, t_list **stack_b,
+					int *chunk_start, int *chunk_end)
 {
-	static int stop;
+	static int	stop;
 
 	if ((*stack_a)->index >= (*chunk_start) && (*stack_a)->index <= *chunk_end)
 	{
-		if ((*stack_a)->index > ((*chunk_end) + (*chunk_start))/2)
+		if ((*stack_a)->index > ((*chunk_end) + (*chunk_start)) / 2)
 		{
 			pb(stack_a, stack_b);
 			(stop)++;
-			if (*stack_a && !((*stack_a)->index >= (*chunk_start) && (*stack_a)->index <= (*chunk_end)))
+			if (*stack_a && !((*stack_a)->index >= (*chunk_start)
+					&& (*stack_a)->index <= (*chunk_end)))
 				rr(stack_a, stack_b);
 			else
 				rb(stack_b, 1);
@@ -23,18 +37,15 @@ int mini_push_to_b(t_list **stack_a, t_list **stack_b, int *chunk_start, int *ch
 	}
 	else if (stop <= *chunk_end)
 		ra(stack_a, 1);
-	return (stop);
 }
 
-
-void push_to_b(t_list **stack_a, t_list **stack_b, int d)
+void	push_to_b(t_list **stack_a, t_list **stack_b, int d)
 {
-	int stack_size;
-	int chunk_start;
-	int chunk_end;
-	int a;
-	int stop;
-	int tmp;
+	int	stack_size;
+	int	chunk_start;
+	int	chunk_end;
+	int	a;
+	int	tmp;
 
 	chunk_start = 0;
 	chunk_end = ft_lstsize(*stack_a) / d - 1;
@@ -44,22 +55,18 @@ void push_to_b(t_list **stack_a, t_list **stack_b, int d)
 	{
 		stack_size = ft_lstsize(*stack_a);
 		while (stack_size--)
-		{
-			stop = mini_push_to_b(stack_a, stack_b, &chunk_start, &chunk_end);
-			// if (stop == chunk_end)
-			// 	break;
-		}
+			mini_push_to_b(stack_a, stack_b, &chunk_start, &chunk_end);
 		chunk_start += tmp;
 		chunk_end += tmp;
 	}
 }
 
-void get_list_max(t_list *stack_b, t_list **max, t_list **bef_max)
+void	get_list_max(t_list *stack_b, t_list **max, t_list **bef_max)
 {
-	t_list *head;
-	int b_max;
-	int b_bef_max;
-	int i;
+	t_list	*head;
+	int		b_max;
+	int		b_bef_max;
+	int		i;
 
 	b_max = INT_MIN;
 	b_bef_max = INT_MIN;
@@ -80,33 +87,33 @@ void get_list_max(t_list *stack_b, t_list **max, t_list **bef_max)
 	}
 }
 
-void	whois_first(t_list **stack_a, t_list **stack_b, t_list *max, t_list *bef_max)
+void	whois_first(t_list **stack_a, t_list **stack_b,
+				t_list *max, t_list *bef_max)
 {
-	if ((*stack_b) == bef_max)
-		pa(stack_a, stack_b);
 	if (max->moves > ft_lstsize(*stack_b) / 2)
 		while (*stack_b != max)
 			rrb(stack_b, 1);
 	else
+	{
 		while (*stack_b != max)
 		{
 			if ((*stack_b) == bef_max)
 			{
 				pa(stack_a, stack_b);
-				if (max->moves > ft_lstsize(*stack_b)/2)
+				if (max->moves > ft_lstsize(*stack_b) / 2)
 					while (*stack_b != max)
 						rrb(stack_b, 1);
 				else
 					while (*stack_b != max)
 						rb(stack_b, 1);
 				pa(stack_a, stack_b);
-				return;
+				return ;
 			}
 			rb(stack_b, 1);
 		}
+	}
 	if (*stack_b == max)
 		pa(stack_a, stack_b);
-	return;
 }
 
 void	push_to_a(t_list **stack_a, t_list **stack_b)
@@ -118,8 +125,11 @@ void	push_to_a(t_list **stack_a, t_list **stack_b)
 	{
 		get_list_max(*stack_b, &max, &bef_max);
 		index_list(*stack_b);
+		if ((*stack_b) == bef_max)
+			pa(stack_a, stack_b);
 		whois_first(stack_a, stack_b, max, bef_max);
-		if (*stack_a && (*stack_a)->next && (*stack_a)->content > (*stack_a)->next->content)
+		if (*stack_a && (*stack_a)->next
+			&& (*stack_a)->content > (*stack_a)->next->content)
 			sa(*stack_a, 1);
 	}
 	return ;
