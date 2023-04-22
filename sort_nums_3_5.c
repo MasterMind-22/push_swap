@@ -96,7 +96,6 @@ void	sort_5_numbers(t_list **stack_a, t_list **stack_b)
 
 void	sort_nums(t_list **stack_a, t_list **stack_b)
 {
-	(void)stack_b;
 	index_list_min_to_max(stack_a);
 	if (ft_lstsize(*stack_a) == 1)
 		return ;

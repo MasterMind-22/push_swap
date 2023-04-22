@@ -66,7 +66,7 @@ t_list	*get_list_min(t_list *stack_a);
 void	sort_3_numbers(t_list **stack_a);
 void	index_list(t_list *stack_a);
 void	push_to_a(t_list **stack_a, t_list **stack_b);
-void mini_push_to_b(t_list **stack_a, t_list **stack_b, int *stop, int *chunk_start, int *chunk_end);
+int		mini_push_to_b(t_list **stack_a, t_list **stack_b, int *chunk_start, int *chunk_end);
 void	push_to_b(t_list **stack_a, t_list **stack_b, int d);
 void	sort_5_numbers(t_list **stack_a, t_list **stack_b);
 

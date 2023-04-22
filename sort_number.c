@@ -138,7 +138,9 @@ void push_to_a(t_list **stack_a, t_list **stack_b)
 
 void sort_3_numbers(t_list **stack_a)
 {
-	if (ft_lstsize(*stack_a) == 1)
+	if (ft_lstsize(*stack_a) == 1 ||
+	(((*stack_a)->content < (*stack_a)->next->content) 
+	&& (*stack_a)->next->content < ft_lstlast(*stack_a)->content))
 		return;
 	else if (ft_lstsize(*stack_a) == 2 || ((*stack_a)->content > (*stack_a)->next->content
 		&& (*stack_a)->content < (*stack_a)->next->next->content))
@@ -165,19 +167,16 @@ void sort_3_numbers(t_list **stack_a)
 
 void sort_5_numbers(t_list **stack_a, t_list **stack_b)
 {
-	// (void)stack_b;
-	// (void)stack_a;
-	count_move_to_head(*stack_a);
 	t_list *max;
 	t_list *bef_max;
-	get_list_max(*stack_a, &max, &bef_max);
-	while (*stack_a != max)
-		ra(stack_a,1);
-	pb(stack_a, stack_b);
-	get_list_max(*stack_a, &max, &bef_max);
-	while (*stack_a != max)
-		ra(stack_a,1);
-	pb(stack_a, stack_b);
+
+	while (ft_lstsize(*stack_a)!=3)
+	{
+		get_list_max(*stack_a, &max, &bef_max);
+		while (*stack_a != max)
+			ra(stack_a,1);
+		pb(stack_a, stack_b);
+	}
 	sort_3_numbers(stack_a);
 	if (*stack_b && (*stack_b)->content > (*stack_b)->next->content)
 		sb(*stack_b, 1);
@@ -186,9 +185,6 @@ void sort_5_numbers(t_list **stack_a, t_list **stack_b)
 		pa(stack_a, stack_b);
 		ra(stack_a,  1);
 	}
-	
-	
-
 }
 
 void sort_3_nums(t_list **stack_a,	t_list **stack_b)

@@ -56,3 +56,25 @@ int	ft_strcmp( char *s1, char *s2)
 	}
 	return (0);
 }
+
+void	index_list_min_to_max(t_list **stack_a)
+{
+	t_list *head;
+	t_list *tmp;
+	int i;
+
+	head = *stack_a;
+	tmp = *stack_a;
+	i = ft_lstsize(head);
+	while (i--)
+	{
+		head = (*stack_a);
+		while (head)
+		{
+			if (tmp->content > head->content)
+				tmp->index++;
+			head = head->next;
+		}
+		tmp = tmp->next;
+ 	}
+}
