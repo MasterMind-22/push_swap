@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/23 15:27:22 by yonadry           #+#    #+#             */
+/*   Updated: 2023/04/23 15:42:02 by yonadry          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-void is_instuc_valid(t_list **stack_a, t_list **stack_b, char *instruction)
+void	is_instuc_valid(t_list **stack_a, t_list **stack_b, char *instruction)
 {
 	if (ft_strcmp(instruction, "sa\n") == 0)
 		sa(*stack_a, 0);
@@ -28,10 +40,10 @@ void is_instuc_valid(t_list **stack_a, t_list **stack_b, char *instruction)
 		ft_error();
 }
 
-int is_lst_sorted(t_list *stack_a)
+int	is_lst_sorted(t_list *stack_a)
 {
-	int i;
-	t_list *head;
+	int		i;
+	t_list	*head;
 
 	head = stack_a;
 	i = 1;
@@ -47,13 +59,25 @@ int is_lst_sorted(t_list *stack_a)
 		return (1);
 	else
 		return (0);
-	
 }
 
-int main(int ac, char **av)
+void	check_instructions(t_list **stack_a, t_list **stack_b)
+{
+	char	*instruction;
+
+	while (1)
+	{
+		instruction = get_next_line(0);
+		if (!instruction)
+			break ;
+		is_instuc_valid(stack_a, stack_b, instruction);
+		free(instruction);
+	}
+}
+
+int	main(int ac, char **av)
 {
 	char	**args;
-	char	*instruction;
 	t_list	*stack_a;
 	t_list	*stack_b;
 	t_list	*free_lst;
@@ -65,14 +89,7 @@ int main(int ac, char **av)
 		args = parsing(av, 1);
 		add_to_list(&stack_a, args);
 		free_arr((char **)args);
-		while (1)
-		{
-			instruction = get_next_line(0);
-			if (!instruction)
-				break;
-			is_instuc_valid(&stack_a, &stack_b, instruction);
-			free(instruction);
-		}
+		check_instructions(&stack_a, &stack_b);
 		if (is_lst_sorted(stack_a) && !ft_lstsize(stack_b))
 			ft_putstr_fd("OK\n", 1);
 		else

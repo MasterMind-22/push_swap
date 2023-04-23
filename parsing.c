@@ -6,7 +6,7 @@
 /*   By: yonadry <yonadry@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/28 18:01:34 by yonadry           #+#    #+#             */
-/*   Updated: 2023/04/22 09:20:06 by yonadry          ###   ########.fr       */
+/*   Updated: 2023/04/23 15:27:07 by yonadry          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,8 @@ char	**parsing(char **av, int is_bonus)
 	while (av[i])
 	{
 		check_empty(av[i]);
-		save = ft_strjoin(save, av[i]);
+		save = ft_strjoin(save, av[i++]);
 		save = ft_strjoin(save, " ");
-		i++;
 	}
 	save1 = ft_split(save, ' ');
 	i = 0;
