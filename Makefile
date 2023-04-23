@@ -12,9 +12,25 @@ SRCS = help_functions.c \
 	   sort_nums_100_500.c \
 	   sort_nums_3_5.c \
 	   get_next_line.c \
-	   get_next_line_utils.c
+	   get_next_line_utils.c \
+	   push_swap.c
+
+B_SRCS = help_functions.c \
+	   parsing.c \
+	   list_funcs.c \
+	   libft_utils.c \
+	   ft_split.c \
+	   instructions_1.c \
+	   instructions_2.c \
+	   instructions_3.c \
+	   sort_nums_100_500.c \
+	   sort_nums_3_5.c \
+	   get_next_line.c \
+	   get_next_line_utils.c \
+	   checker.c
 
 OBJS = ${SRCS:.c=.o}
+B_OBJS = ${B_SRCS:.c=.o}
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
@@ -22,17 +38,18 @@ all : $(NAME)
 
 bonus : $(CHECKER)
 
-$(CHECKER): $(OBJS)
-	$(CC) checker.c $(CFLAGS) $? -o $(CHECKER)
-
-$(NAME): $(OBJS)
-	$(CC) push_swap.c $(CFLAGS) $? -o $(NAME)
-
 %.o : %.c push_swap.h
 	$(CC) $(CFLAGS) -c $<
 
+$(CHECKER): $(B_OBJS)
+	$(CC) $(CFLAGS) $^ -o $(CHECKER)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $^ -o $(NAME)
+
+
 clean :
-	rm -f $(OBJS)
+	rm -f $(OBJS) $(B_OBJS)
 
 fclean : clean
 	rm -f $(NAME) $(CHECKER)

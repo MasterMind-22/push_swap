@@ -19,12 +19,15 @@ void	sa(t_list *stack_a, int a)
 
 	if (!stack_a)
 		return ;
-	tmp = stack_a->next->content;
-	index = stack_a->next->index;
-	stack_a->next->content = stack_a->content;
-	stack_a->next->index = stack_a->index;
-	stack_a->content = tmp;
-	stack_a->index = index;
+	if (stack_a && stack_a->next)
+	{
+		tmp = stack_a->next->content;
+		index = stack_a->next->index;
+		stack_a->next->content = stack_a->content;
+		stack_a->next->index = stack_a->index;
+		stack_a->content = tmp;
+		stack_a->index = index;
+	}
 	if (a)
 		ft_putstr_fd("sa\n", 1);
 	return ;
@@ -37,22 +40,26 @@ void	sb(t_list *stack_b, int b)
 
 	if (!stack_b)
 		return ;
-	tmp = stack_b->next->content;
-	index = stack_b->next->index;
-	stack_b->next->content = stack_b->content;
-	stack_b->next->index = stack_b->index;
-	stack_b->content = tmp;
-	stack_b->index = index;
+	if (stack_b && stack_b->next)
+	{
+		tmp = stack_b->next->content;
+		index = stack_b->next->index;
+		stack_b->next->content = stack_b->content;
+		stack_b->next->index = stack_b->index;
+		stack_b->content = tmp;
+		stack_b->index = index;
+	}
 	if (b)
 		ft_putstr_fd("sb\n", 1);
 	return ;
 }
 
-void	ss(t_list *stack_a, t_list *stack_b)
+void	ss(t_list *stack_a, t_list *stack_b, int ss)
 {
 	sa(stack_a, 0);
 	sb(stack_b, 0);
-	ft_putstr_fd("ss\n", 1);
+	if (ss)
+		ft_putstr_fd("ss\n", 1);
 	return ;
 }
 

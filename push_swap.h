@@ -74,19 +74,21 @@ void	mini_push_to_b(t_list **stack_a, t_list **stack_b,
 void	push_to_b(t_list **stack_a, t_list **stack_b, int d);
 void	sort_5_numbers(t_list **stack_a, t_list **stack_b);
 void	add_to_list(t_list **lst, char **av);
-
+void	is_instuc_valid(t_list **stack_a, t_list **stack_b, char *instruction);
+void	is_instuc_valid(t_list **stack_a, t_list **stack_b, char *instruction);
+int		is_lst_sorted(t_list *stack_a);
 /*==================== Instructions ====================*/
 
 void	sa(t_list *stack_a, int a);
 void	sb(t_list *stack_b, int b);
-void	ss(t_list *stack_a, t_list *stack_b);
+void	ss(t_list *stack_a, t_list *stack_b, int ss);
 void	ra(t_list **stack_a, int a);
 void	rb(t_list **stack_b, int a);
-void	rr(t_list **stack_a, t_list **stack_b);
+void	rr(t_list **stack_a, t_list **stack_b, int rr);
 void	rra(t_list **stack_a, int a);
 void	rrb(t_list **stack_b, int b);
-void	rrr(t_list **stack_a, t_list **stack_b);
-void	pa(t_list **stack_a, t_list **stack_b);
-void	pb(t_list **stack_a, t_list **stack_b);
+void	rrr(t_list **stack_a, t_list **stack_b, int rrr);
+void	pa(t_list **stack_a, t_list **stack_b, int pa);
+void	pb(t_list **stack_a, t_list **stack_b, int pb);
 
 #endif

@@ -87,11 +87,11 @@ void	sort_5_numbers(t_list **stack_a, t_list **stack_b)
 			else
 				rra(stack_a, 1);
 		}
-		pb(stack_a, stack_b);
+		pb(stack_a, stack_b, 1);
 	}
 	sort_3_numbers(stack_a);
 	while (*stack_b)
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, 1);
 }
 
 void	sort_nums(t_list **stack_a, t_list **stack_b)
